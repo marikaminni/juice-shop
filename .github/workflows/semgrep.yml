@@ -40,7 +40,7 @@ jobs:
       # Fetch project source with GitHub Actions Checkout. Use either v3 or v4.
       - uses: actions/checkout@v4
       # Run the "semgrep ci" command on the command line of the docker image.
-      - run: semgrep scan --severity=Critical,High --error --sarif-output=semgrep_report.sarif
+      - run: semgrep scan --severity=error --error --sarif-output=semgrep_report.sarif
         env:
           # Connect to Semgrep AppSec Platform through your SEMGREP_APP_TOKEN.
           # Generate a token from Semgrep AppSec Platform > Settings
@@ -57,7 +57,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
-          sarif-file: semgrep_report.sarif
+          sarif_file: semgrep_report.sarif
   trivy:
     name: Trivy Action
     runs-on: ubuntu-latest
