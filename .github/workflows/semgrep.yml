@@ -61,7 +61,6 @@ jobs:
   trivy:
     name: Trivy Action
     runs-on: ubuntu-latest
-    needs: semgrep
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
